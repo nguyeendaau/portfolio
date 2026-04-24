@@ -1,1 +1,652 @@
-<!-- Contents of HaiNguyen_Portfolio.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tran Hoang Hai Nguyen — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1B2A4A;
+    --navy-deep: #0F1E35;
+    --gold: #C9A84C;
+    --gold-light: #EDD98A;
+    --cream: #FAF8F4;
+    --text: #1B2A4A;
+    --muted: #6B7A99;
+    --border: #E4E8F0;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px; color: var(--muted); text-decoration: none;
+    font-weight: 400; letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy-deep);
+    display: flex; align-items: center;
+    padding: 100px 2rem 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-geo {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .hero-geo circle, .hero-geo rect {
+    fill: none; stroke: rgba(201,168,76,0.08);
+  }
+  .hero-inner {
+    max-width: 860px; margin: 0 auto; width: 100%;
+    position: relative; z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 28px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 700; color: #fff;
+    line-height: 1.05; letter-spacing: -0.5px;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold-light);
+  }
+  .hero-desc {
+    font-size: 17px; color: #8BA3C7;
+    max-width: 540px; line-height: 1.75;
+    margin-bottom: 2.5rem; font-weight: 300;
+  }
+  .hero-desc strong { color: #C9D8EE; font-weight: 500; }
+  .hero-cta {
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy-deep);
+    padding: 13px 28px; border-radius: 4px;
+    font-size: 13px; font-weight: 500; text-decoration: none;
+    letter-spacing: 0.3px; transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.2); color: #8BA3C7;
+    padding: 13px 28px; border-radius: 4px;
+    font-size: 13px; font-weight: 400; text-decoration: none;
+    letter-spacing: 0.3px; transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+  .hero-stats {
+    margin-top: 4rem;
+    display: flex; gap: 3rem; flex-wrap: wrap;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px; font-weight: 700; color: var(--gold);
+    line-height: 1;
+  }
+  .hero-stat-label { font-size: 12px; color: #5A7499; margin-top: 4px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 2rem; }
+  .section-inner { max-width: 860px; margin: 0 auto; }
+  .section-tag {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.5rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-tag::before { content: ''; width: 20px; height: 1px; background: var(--gold); display: block; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700; color: var(--navy);
+    line-height: 1.15; margin-bottom: 1rem;
+  }
+  .section-lead {
+    font-size: 16px; color: var(--muted);
+    max-width: 560px; line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: start;
+  }
+  .about-bio { font-size: 15px; color: var(--muted); line-height: 1.85; }
+  .about-bio p { margin-bottom: 1rem; }
+  .about-bio strong { color: var(--navy); font-weight: 500; }
+  .about-skills h3 {
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); font-weight: 500; margin-bottom: 1rem;
+  }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; color: var(--text);
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+  }
+  .skill-list li::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+  .contact-strip {
+    margin-top: 2rem;
+    padding: 1.2rem 1.5rem;
+    background: var(--cream); border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .contact-strip a {
+    display: block; font-size: 13px; color: var(--muted);
+    text-decoration: none; padding: 3px 0;
+    transition: color 0.2s;
+  }
+  .contact-strip a:hover { color: var(--navy); }
+  .contact-strip a span { color: var(--gold); font-weight: 500; margin-right: 6px; }
+
+  /* ── FEATURED PROJECT ── */
+  .featured { background: var(--cream); }
+  .project-card {
+    background: var(--navy);
+    border-radius: 12px; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1.1fr;
+  }
+  .project-card-left {
+    padding: 3rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .project-badge {
+    display: inline-block;
+    background: var(--gold); color: var(--navy-deep);
+    font-size: 10px; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 3px;
+    margin-bottom: 1.5rem; width: fit-content;
+  }
+  .project-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: #fff;
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .project-card p {
+    font-size: 14px; color: #8BA3C7; line-height: 1.75;
+    margin-bottom: 2rem; font-weight: 300;
+  }
+  .project-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+  .project-meta span {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #8BA3C7; font-size: 11px; padding: 4px 10px; border-radius: 3px;
+  }
+  .project-card-right {
+    background: #111E33;
+    padding: 3rem;
+    display: flex; flex-direction: column; gap: 1.2rem;
+  }
+  .project-card-right h4 {
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem; font-weight: 500;
+  }
+  .insight-item {
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+  }
+  .insight-item p {
+    font-size: 13px; color: #8BA3C7; line-height: 1.6; margin: 0;
+  }
+  .insight-item strong { color: #C9D8EE; font-weight: 500; }
+
+  /* ── METRICS ── */
+  .metrics { background: var(--navy-deep); }
+  .metrics .section-title { color: #fff; }
+  .metrics .section-lead { color: #5A7499; }
+  .metrics .section-tag { color: var(--gold-light); }
+  .metrics .section-tag::before { background: var(--gold-light); }
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5px; background: rgba(255,255,255,0.05);
+    border-radius: 8px; overflow: hidden;
+  }
+  .metric-box {
+    background: #111E33;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .metric-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 700;
+    color: var(--gold); line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric-desc { font-size: 12px; color: #5A7499; line-height: 1.5; }
+  .metric-sub { font-size: 11px; color: #3A5070; margin-top: 4px; }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--white); }
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item {
+    padding-left: 2rem; margin-bottom: 2.5rem; position: relative;
+  }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -4px; top: 8px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--cream);
+  }
+  .timeline-period {
+    font-size: 11px; color: var(--gold); letter-spacing: 0.8px;
+    font-weight: 500; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .timeline-role {
+    font-size: 16px; font-weight: 500; color: var(--navy); margin-bottom: 2px;
+  }
+  .timeline-company {
+    font-size: 13px; color: var(--muted); margin-bottom: 0.75rem;
+  }
+  .timeline-bullets { list-style: none; }
+  .timeline-bullets li {
+    font-size: 13px; color: var(--muted); padding: 3px 0 3px 16px;
+    position: relative; line-height: 1.6;
+  }
+  .timeline-bullets li::before {
+    content: '▸'; position: absolute; left: 0; color: var(--gold);
+    font-size: 10px; top: 5px;
+  }
+  .timeline-bullets li strong { color: var(--navy); font-weight: 500; }
+
+  /* ── RECOMMENDATIONS ── */
+  .recs { background: var(--cream); }
+  .rec-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  }
+  .rec-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.25rem;
+  }
+  .rec-card-label {
+    font-size: 10px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--gold); margin-bottom: 8px;
+  }
+  .rec-card h4 { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .rec-card p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-deep);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px;
+  }
+  footer p { font-size: 13px; color: #3A5070; margin-bottom: 1.5rem; }
+  footer .footer-links {
+    display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+  }
+  footer .footer-links a {
+    font-size: 13px; color: #5A7499; text-decoration: none;
+    transition: color 0.2s;
+  }
+  footer .footer-links a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero h1      { animation-delay: 0.2s; }
+  .hero-desc    { animation-delay: 0.3s; }
+  .hero-cta     { animation-delay: 0.4s; }
+  .hero-stats   { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    section { padding: 70px 1.2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .project-card { grid-template-columns: 1fr; }
+    .rec-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 2rem; }
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Hai Nguyen</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#project">Featured Project</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <svg class="hero-geo" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <circle cx="900" cy="150" r="280" stroke-width="1"/>
+    <circle cx="900" cy="150" r="180" stroke-width="0.5"/>
+    <circle cx="900" cy="150" r="80" stroke-width="0.5"/>
+    <rect x="60" y="60" width="120" height="120" rx="4" stroke-width="0.5" transform="rotate(15 120 120)"/>
+    <rect x="100" y="600" width="80" height="80" rx="4" stroke-width="0.5" transform="rotate(-10 140 640)"/>
+    <line x1="0" y1="400" x2="400" y2="400" stroke="rgba(201,168,76,0.05)" stroke-width="1"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Digital Marketing · FinTech & Tech Growth</div>
+    <h1>Tran Hoang<br><em>Hai Nguyen</em></h1>
+    <p class="hero-desc">
+      Graduating <strong>April 2026</strong> from RMIT University Vietnam.
+      1+ year of B2B experience across fintech, edtech, and digital media —
+      combining <strong>data-driven strategy</strong> with creative execution.
+    </p>
+    <div class="hero-cta">
+      <a href="#project" class="btn-primary">View Featured Project</a>
+      <a href="mailto:nguyendau2704@gmail.com" class="btn-ghost">Get in touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">828</div>
+        <div class="hero-stat-label">Survey respondents — Ddreamer research</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">50%</div>
+        <div class="hero-stat-label">LinkedIn ad relevance score increase</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">3×</div>
+        <div class="hero-stat-label">Industries: FinTech · EdTech · MCN</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">🏆</div>
+        <div class="hero-stat-label">University pitch competition winner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">Who I am</div>
+    <h2 class="section-title">Marketing intelligence<br>meets creative strategy</h2>
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>
+          I'm a Digital Marketing professional finishing my degree at <strong>RMIT University Vietnam</strong> in April 2026,
+          with hands-on experience across B2B tech, edtech, and YouTube multi-channel networks.
+        </p>
+        <p>
+          My edge is the combination of <strong>analytical rigour</strong> — building competitor reports,
+          running SEO research, analysing 828-respondent datasets — with the ability to
+          translate those insights into <strong>compelling content and campaigns</strong>.
+        </p>
+        <p>
+          I'm particularly drawn to <strong>fintech and tech companies</strong> where marketing
+          requires understanding complex products, financial audiences, and fast-moving markets.
+          The overlap of data, storytelling, and strategy is where I do my best work.
+        </p>
+        <div class="contact-strip" id="contact">
+          <a href="tel:+84987733742"><span>📞</span>(+84) 987 733 742</a>
+          <a href="mailto:nguyendau2704@gmail.com"><span>✉</span>nguyendau2704@gmail.com</a>
+          <a href="https://linkedin.com/in/nguyen-thh" target="_blank"><span>in</span>linkedin.com/in/nguyen-thh</a>
+        </div>
+      </div>
+      <div class="about-skills">
+        <h3>Core Skills</h3>
+        <ul class="skill-list">
+          <li>SEO Strategy &amp; Keyword Research</li>
+          <li>B2B Content Marketing</li>
+          <li>Market Research &amp; Competitive Intelligence</li>
+          <li>Consumer Segmentation &amp; Persona Building</li>
+          <li>Data Storytelling &amp; Reporting</li>
+          <li>Social Media Strategy (LinkedIn, TikTok, Meta)</li>
+          <li>Content Localisation (EN ↔ Vietnamese)</li>
+          <li>Google Analytics · LinkedIn Ads</li>
+          <li>YouTube Asset Monetisation (Certified)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECT -->
+<section class="featured" id="project">
+  <div class="section-inner">
+    <div class="section-tag">Featured Work</div>
+    <h2 class="section-title">Ddreamer Jewellery<br>Marketing Intelligence</h2>
+    <p class="section-lead">
+      A full-cycle primary research project for a Vietnamese jewellery brand — from market sizing
+      to audience segmentation to 4P strategy. Won the university pitch competition.
+    </p>
+    <div class="project-card">
+      <div class="project-card-left">
+        <div>
+          <div class="project-badge">🏆 Pitch Winner · MKTG1418</div>
+          <h3>Consumer Research &amp; Growth Strategy for Gen Z Expansion</h3>
+          <p>
+            Led a 5-member team to design and execute a marketing intelligence study for Ddreamer — 
+            a Vietnamese jewellery brand pausing marketing since 2019. The goal: re-enter the market 
+            targeting Gen Z (18–24) while retaining Millennial loyalty, with a 10% sales growth target 
+            and 3:1 ROI in 3 months.
+          </p>
+        </div>
+        <div class="project-meta">
+          <span>828 respondents</span>
+          <span>HCMC + Hanoi</span>
+          <span>Dual-persona framework</span>
+          <span>4P recommendations</span>
+          <span>Team of 5</span>
+        </div>
+      </div>
+      <div class="project-card-right">
+        <h4>Key Insights</h4>
+        <div class="insight-item">
+          <p><strong>Age &amp; willingness to pay</strong> were the two strongest predictors of purchase behaviour — used to build dual personas: "The Current" (Millennials) vs "The Potential" (Gen Z).</p>
+        </div>
+        <div class="insight-item">
+          <p><strong>BNPL is a conversion unlock</strong> for Gen Z — financial flexibility directly increases purchase likelihood in the 18–24 segment.</p>
+        </div>
+        <div class="insight-item">
+          <p><strong>Micro-KOC over macro-influencer</strong> — authenticity outperforms reach; 55% of Gen Z trust peer recommendations over celebrity endorsement.</p>
+        </div>
+        <div class="insight-item">
+          <p><strong>Ddreamer's untapped moat</strong>: the only workshop preserving traditional Vietnamese silversmithing — a powerful brand story not yet leveraged in marketing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics">
+  <div class="section-inner">
+    <div class="section-tag">By the numbers</div>
+    <h2 class="section-title">Research at scale</h2>
+    <p class="section-lead">Quantitative rigour that goes beyond the classroom brief.</p>
+    <div class="metrics-grid">
+      <div class="metric-box">
+        <div class="metric-num">828</div>
+        <div class="metric-desc">Actual survey respondents</div>
+        <div class="metric-sub">Target was 385 — exceeded by 2×</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-num">3</div>
+        <div class="metric-desc">Research methodologies</div>
+        <div class="metric-sub">Descriptive · Exploratory · Causal</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-num">2</div>
+        <div class="metric-desc">Audience personas built</div>
+        <div class="metric-sub">The Current + The Potential</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-num">6</div>
+        <div class="metric-desc">Research objectives mapped</div>
+        <div class="metric-sub">Across segmentation, channels &amp; behaviour</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-num">4P</div>
+        <div class="metric-desc">Full marketing mix delivered</div>
+        <div class="metric-sub">Product · Price · Place · Promotion</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-num">🏆</div>
+        <div class="metric-desc">Pitch competition winner</div>
+        <div class="metric-sub">Selected by university panel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-inner">
+    <div class="section-tag">Work Experience</div>
+    <h2 class="section-title">Where I've built<br>real-world skills</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-period">Oct 2024 – Aug 2025</div>
+        <div class="timeline-role">Digital Marketing Associate</div>
+        <div class="timeline-company">Naviworld Vietnam · B2B Tech / ERP Solutions</div>
+        <ul class="timeline-bullets">
+          <li>Produced <strong>5+ competitor intelligence reports</strong> informing product positioning in Vietnam's ERP market.</li>
+          <li>Localised <strong>10+ marketing assets</strong> EN → Vietnamese, preserving technical accuracy across B2B buyer personas.</li>
+          <li>Led SEO keyword research for LinkedIn campaigns — <strong>50% increase in ad relevance score</strong>, reducing cost-per-lead.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-period">Jun 2024 – Sep 2024</div>
+        <div class="timeline-role">Digital Marketing Intern</div>
+        <div class="timeline-company">Kyons AI · EdTech</div>
+        <ul class="timeline-bullets">
+          <li>Mapped edtech competitive landscape, surfacing differentiation opportunities used in product messaging.</li>
+          <li>Tracked 3-month content performance; identified <strong>2 high-impact optimisations</strong> that measurably lifted engagement.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-period">Mar 2024 – Jun 2024</div>
+        <div class="timeline-role">Partner Management Intern</div>
+        <div class="timeline-company">Metub Network · YouTube MCN</div>
+        <ul class="timeline-bullets">
+          <li>Supported creator outreach across a <strong>50+ creator network</strong> in music, film, lifestyle &amp; travel.</li>
+          <li>Pitched <strong>3 revenue diversification concepts</strong>; one adopted into Q2 content planning.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY RECS SECTION -->
+<section class="recs">
+  <div class="section-inner">
+    <div class="section-tag">Ddreamer · Strategy Output</div>
+    <h2 class="section-title">4P Recommendations Delivered</h2>
+    <p class="section-lead">From research insight to actionable marketing strategy across the full mix.</p>
+    <div class="rec-grid">
+      <div class="rec-card">
+        <div class="rec-card-label">Product</div>
+        <h4>Customisation &amp; ethics</h4>
+        <p>Expand engraving services and amplify ethical sourcing story — core Gen Z purchase drivers identified in research.</p>
+      </div>
+      <div class="rec-card">
+        <div class="rec-card-label">Price</div>
+        <h4>BNPL integration</h4>
+        <p>Introduce Buy Now Pay Later to unlock conversions in the 18–24 segment, where financial flexibility is a key purchase trigger.</p>
+      </div>
+      <div class="rec-card">
+        <div class="rec-card-label">Place</div>
+        <h4>TikTok Shop &amp; Shopee SEO</h4>
+        <p>Prioritise TikTok Shop as top-of-funnel; strengthen Shopee product SEO to capture high-intent e-commerce traffic.</p>
+      </div>
+      <div class="rec-card">
+        <div class="rec-card-label">Promotion</div>
+        <h4>Micro-KOC campaigns</h4>
+        <p>Partner with lifestyle micro-KOCs over macro-influencers. UGC campaigns build social proof at lower cost-per-acquisition.</p>
+      </div>
+      <div class="rec-card">
+        <div class="rec-card-label">Omni-channel</div>
+        <h4>Online ↔ Offline sync</h4>
+        <p>QR codes in-store linking to social content; in-store workshop events feeding video content pipeline.</p>
+      </div>
+      <div class="rec-card">
+        <div class="rec-card-label">Brand Story</div>
+        <h4>Vietnamese craft narrative</h4>
+        <p>Activate Ddreamer's unique workshop heritage — the only studio preserving traditional Vietnamese silversmithing — as the core brand differentiator.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Tran Hoang Hai Nguyen</div>
+  <p>Digital Marketing · FinTech &amp; Tech Growth · Ho Chi Minh City</p>
+  <div class="footer-links">
+    <a href="mailto:nguyendau2704@gmail.com">nguyendau2704@gmail.com</a>
+    <a href="tel:+84987733742">(+84) 987 733 742</a>
+    <a href="https://linkedin.com/in/nguyen-thh" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
